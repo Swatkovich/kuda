@@ -5,7 +5,7 @@ export function mainTheme(isDarkTheme: boolean): Theme {
   return createTheme({
     palette: {
       primary: {
-        main: isDarkTheme ? '#3576cd' : '#ffffff',
+        main: isDarkTheme ? '#1B1B1B' : '#ffffff',
         // light: isDarkTheme ? '#eaf3ff' : '',
         // dark: isDarkTheme ? '#2862AF' : '',
       },

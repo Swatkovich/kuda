@@ -16,7 +16,6 @@ const App: FC = observer(() => {
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={mainTheme(isDarkTheme)}>
-        <Button onClick={() => setIsDarkTheme(!isDarkTheme)}>123</Button>
         <Routes>
           <Route path="/" element={<LoginPage />} />
           {/* <Route path="/profile" element={<UserPage />} /> */}
@@ -24,6 +23,12 @@ const App: FC = observer(() => {
           {/* <Route path="/registration" element={<RegisterPage />}></Route> */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        <Button
+          style={{ position: 'absolute', top: '0px', color: 'white' }}
+          onClick={() => setIsDarkTheme(!isDarkTheme)}
+        >
+          DarkTheme
+        </Button>
       </ThemeProvider>
     </StyledEngineProvider>
   );
