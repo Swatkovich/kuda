@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { observer } from 'mobx-react-lite';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-function App() {
+import { FC } from 'react';
+import LoginPage from './pages/LoginPage';
+
+const App: FC = observer(() => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="allApp">
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        {/* <Route path="/profile" element={<UserPage />} /> */}
+        <Route path="/login" element={<LoginPage />} />
+        {/* <Route path="/registration" element={<RegisterPage />}></Route> */}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </div>
   );
-}
+});
 
 export default App;
