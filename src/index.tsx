@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './assets/styles.scss';
 import App from './App';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import 'font-awesome/css/font-awesome.css';
