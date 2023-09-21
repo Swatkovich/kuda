@@ -25,8 +25,8 @@ const enLocale: { [key: string]: string } = {
   'user.page.exit': 'Left Account',
 
   //login page
-  'login.page.login': 'LOG IN',
-  'login.page.signup': ' SIGN UP',
+  'login.page.login': 'ВОЙТИ',
+  'login.page.signup': ' ЗАРЕГЕСТРИРОВАТЬСЯ',
 
   //register page
   'register.page.register': 'REGISTRATE',
@@ -46,6 +46,6 @@ const enLocale: { [key: string]: string } = {
 
   'main.block.3':
     'POINT AND CLICK is choise for you if you condiser yourseld as shooter player. Specialized on precision movements of your mouse and eyes trigger. Closer to the center and faster you are clicking - more points you gain',
-}
+};
 
-export default enLocale
+export default enLocale;
