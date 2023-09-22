@@ -34,9 +34,15 @@ export function mainTheme(isDarkTheme: boolean): Theme {
     ...mainThemeBase(isDarkTheme),
     components: {
       MuiButton: {
+        defaultProps: {
+          disableTouchRipple: true,
+          disableElevation: true,
+          disableRipple: true,
+        },
         styleOverrides: {
           root: {
-            fontSize: '2rem',
+            transition: 'color 0.05s ease-in-out 0s, background-color 0.5s ease-in-out 0s',
+            fontSize: '3vw',
             textTransform: 'none',
           },
           contained: {
@@ -50,6 +56,9 @@ export function mainTheme(isDarkTheme: boolean): Theme {
           outlined: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
             border: `1px solid ${mainThemeBase(isDarkTheme).palette.primary.dark}`,
+            '&:hover': {
+              borderColor: mainThemeBase(isDarkTheme).palette.primary.dark,
+            },
           },
         },
       },
