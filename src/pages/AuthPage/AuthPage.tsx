@@ -1,21 +1,34 @@
 import { observer } from 'mobx-react'
-import { Button } from '@mui/material'
+import { Box } from '@mui/material'
 import FormatMessage from '../../dictionary'
-import { AuthTitleBox, AuthTitleGreet, AuthTitleGreetSecind, AuthWrapper } from './AuthPage.styles'
+import { AuthTitleBox, AuthTitleGreet, AuthTitleGreetSecind, AuthWrapper, ButtonsWrapper, StyledButton } from './AuthPage.styles'
+import { useNavigate } from 'react-router-dom'
+import { useCallback } from 'react'
 
 const AuthPage = observer(() => {
+  const navigate = useNavigate()
+
+  const changePage = useCallback(
+    (route: string) => {
+      navigate(route)
+    },
+    [navigate]
+  )
+
   return (
     <AuthWrapper>
       <AuthTitleBox>
         <AuthTitleGreet>Привет!</AuthTitleGreet>
         <AuthTitleGreetSecind>Рады видеть тебя в Kuda</AuthTitleGreetSecind>
       </AuthTitleBox>
-      <Button style={{ width: '60rem', height: '9rem', fontSize: '3rem', margin: '30% auto 0 auto', borderRadius: '3.5rem' }} variant="contained">
-        {FormatMessage('login.page.login')}
-      </Button>
-      <Button style={{ width: '60rem', height: '9rem', fontSize: '3rem', margin: '10% auto 0 auto', borderRadius: '3.5rem' }} variant="outlined">
-        {FormatMessage('login.page.signup')}
-      </Button>
+      <ButtonsWrapper>
+        <StyledButton variant="contained" onClick={() => changePage('/login')}>
+          {FormatMessage('login.page.login')}
+        </StyledButton>
+        <Box mt="5vh">
+          <StyledButton variant="outlined">{FormatMessage('login.page.signup')}</StyledButton>
+        </Box>
+      </ButtonsWrapper>
     </AuthWrapper>
   )
 })

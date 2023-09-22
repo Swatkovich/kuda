@@ -33,12 +33,39 @@ const LoginPage = observer(() => {
 
   return (
     <LoginWrapper>
-      <Button style={{ width: '60rem', height: '9rem', fontSize: '3rem', margin: '100% auto 0 auto', borderRadius: '3.5rem' }} variant="contained">
-        {FormatMessage('login.page.login')}
-      </Button>
-      <Button style={{ width: '60rem', height: '9rem', fontSize: '3rem', margin: '10% auto 0 auto', borderRadius: '3.5rem' }} variant="outlined">
-        {FormatMessage('login.page.signup')}
-      </Button>
+      <form autoComplete="false" onSubmit={handleSubmit}>
+        <div className="form">
+          <input
+            autoComplete="off"
+            className="formInput"
+            type="text"
+            id="username"
+            value={username}
+            onChange={handleChange}
+            placeholder="Username"
+          ></input>
+          <div className="password">
+            <input
+              className="formInput"
+              type={showPassword ? 'text' : 'password'}
+              id="password"
+              value={password}
+              onChange={handleChange}
+              placeholder="Password"
+              autoComplete="off"
+            ></input>
+            <div className="showIcon" onClick={() => setShowPassword(!showPassword)}>
+              O
+            </div>
+          </div>
+          <button className="formButton" type="submit">
+            {FormatMessage('login.page.login')}
+          </button>
+          <div className="signUp" onClick={() => changePage('/registration')}>
+            {FormatMessage('login.page.signup')}
+          </div>
+        </div>
+      </form>
     </LoginWrapper>
     // <div className="loginPage-wrapper">
     //   <div className="formContainer">
