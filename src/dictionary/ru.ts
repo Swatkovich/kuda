@@ -25,8 +25,8 @@ const enLocale: { [key: string]: string } = {
   'user.page.exit': 'Left Account',
 
   //login page
-  'login.page.login': 'ВОЙТИ',
-  'login.page.signup': ' ЗАРЕГЕСТРИРОВАТЬСЯ',
+  'login.page.login': 'Войти',
+  'login.page.signup': ' Зарегистрироваться',
 
   //register page
   'register.page.register': 'REGISTRATE',

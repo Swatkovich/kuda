@@ -1,13 +1,14 @@
+// import { mainTheme } from './mainTheme';
 import { createTheme } from '@mui/material/styles'
 import { Theme } from '@mui/material/styles/createTheme'
 
-export function mainTheme(isDarkTheme: boolean): Theme {
+function mainThemeBase(isDarkTheme?: boolean): Theme {
   return createTheme({
     palette: {
       primary: {
         main: isDarkTheme ? '#1B1B1B' : '#ffffff',
-        // light: isDarkTheme ? '#eaf3ff' : '',
-        // dark: isDarkTheme ? '#2862AF' : '',
+        light: '#6F1E1E',
+        dark: '#64313E',
       },
       secondary: {
         main: '#333333',
@@ -19,6 +20,38 @@ export function mainTheme(isDarkTheme: boolean): Theme {
         primary: isDarkTheme ? '#d4d4d4' : '#262323',
         secondary: '#424242',
         disabled: '#797979',
+      },
+    },
+    typography: {
+      fontFamily: ['Gilroy', 'sans-serif'].join(','),
+    },
+    components: {},
+  })
+}
+
+export function mainTheme(isDarkTheme: boolean): Theme {
+  return createTheme({
+    ...mainThemeBase(isDarkTheme),
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            fontSize: '2rem',
+            textTransform: 'none',
+          },
+          contained: {
+            boxShadow: 'none',
+            background: mainThemeBase(isDarkTheme).palette.primary.dark,
+            color: mainThemeBase(true).palette.text.primary,
+            '&:hover': {
+              boxShadow: 'none',
+            },
+          },
+          outlined: {
+            color: mainThemeBase(isDarkTheme).palette.text.primary,
+            border: `1px solid ${mainThemeBase(isDarkTheme).palette.primary.dark}`,
+          },
+        },
       },
     },
   })

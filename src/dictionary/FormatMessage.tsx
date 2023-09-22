@@ -1,4 +1,4 @@
-import enLocale from './en'
+import enLocale from './ru'
 
 const FormatMessage = (id: string) => {
   if (enLocale[id]) return enLocale[id]

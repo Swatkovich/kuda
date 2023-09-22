@@ -4,6 +4,7 @@ import { ChangeEvent, useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import FormatMessage from '../../dictionary'
 import { LoginWrapper } from './LoginPage.styles'
+import { Button } from '@mui/material'
 
 const LoginPage = observer(() => {
   const navigate = useNavigate()
@@ -32,7 +33,12 @@ const LoginPage = observer(() => {
 
   return (
     <LoginWrapper>
-      <p>123</p>
+      <Button style={{ width: '60rem', height: '9rem', fontSize: '3rem', margin: '100% auto 0 auto', borderRadius: '3.5rem' }} variant="contained">
+        {FormatMessage('login.page.login')}
+      </Button>
+      <Button style={{ width: '60rem', height: '9rem', fontSize: '3rem', margin: '10% auto 0 auto', borderRadius: '3.5rem' }} variant="outlined">
+        {FormatMessage('login.page.signup')}
+      </Button>
     </LoginWrapper>
     // <div className="loginPage-wrapper">
     //   <div className="formContainer">
