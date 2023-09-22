@@ -29,7 +29,7 @@ function mainThemeBase(isDarkTheme?: boolean): Theme {
   })
 }
 
-export function mainTheme(isDarkTheme: boolean): Theme {
+export function mainTheme(isDarkTheme?: boolean): Theme {
   return createTheme({
     ...mainThemeBase(isDarkTheme),
     components: {
@@ -51,11 +51,12 @@ export function mainTheme(isDarkTheme: boolean): Theme {
             color: mainThemeBase(true).palette.text.primary,
             '&:hover': {
               boxShadow: 'none',
+              background: mainThemeBase(isDarkTheme).palette.primary.dark,
             },
           },
           outlined: {
             color: mainThemeBase(isDarkTheme).palette.text.primary,
-            border: `1px solid ${mainThemeBase(isDarkTheme).palette.primary.dark}`,
+            border: `0.25vw solid ${mainThemeBase(isDarkTheme).palette.primary.dark}`,
             '&:hover': {
               borderColor: mainThemeBase(isDarkTheme).palette.primary.dark,
             },

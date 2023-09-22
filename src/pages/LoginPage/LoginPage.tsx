@@ -3,8 +3,17 @@ import { observer } from 'mobx-react'
 import { ChangeEvent, useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import FormatMessage from '../../dictionary'
-import { LoginWrapper } from './LoginPage.styles'
-import { Button } from '@mui/material'
+import {
+  LoginTitleBox,
+  LoginWrapper,
+  PasswordWrapper,
+  RemindButton,
+  RemindWrapper,
+  ShowPasswordIcon,
+  StyledButton,
+  StyledForm,
+  StyledInput,
+} from './LoginPage.styles'
 
 const LoginPage = observer(() => {
   const navigate = useNavigate()
@@ -33,80 +42,37 @@ const LoginPage = observer(() => {
 
   return (
     <LoginWrapper>
-      <form autoComplete="false" onSubmit={handleSubmit}>
-        <div className="form">
-          <input
-            autoComplete="off"
+      <LoginTitleBox>KUDA</LoginTitleBox>
+      <StyledForm autoComplete="false" onSubmit={handleSubmit}>
+        <StyledInput
+          autoComplete="off"
+          className="formInput"
+          type="text"
+          id="username"
+          value={username}
+          onChange={handleChange}
+          placeholder="Введите логин"
+        ></StyledInput>
+        <PasswordWrapper>
+          <StyledInput
             className="formInput"
-            type="text"
-            id="username"
-            value={username}
+            type={showPassword ? 'text' : 'password'}
+            id="password"
+            value={password}
             onChange={handleChange}
-            placeholder="Username"
-          ></input>
-          <div className="password">
-            <input
-              className="formInput"
-              type={showPassword ? 'text' : 'password'}
-              id="password"
-              value={password}
-              onChange={handleChange}
-              placeholder="Password"
-              autoComplete="off"
-            ></input>
-            <div className="showIcon" onClick={() => setShowPassword(!showPassword)}>
-              O
-            </div>
-          </div>
-          <button className="formButton" type="submit">
-            {FormatMessage('login.page.login')}
-          </button>
-          <div className="signUp" onClick={() => changePage('/registration')}>
-            {FormatMessage('login.page.signup')}
-          </div>
-        </div>
-      </form>
+            placeholder="Введите пароль"
+            autoComplete="off"
+          ></StyledInput>
+          <ShowPasswordIcon onClick={() => setShowPassword(!showPassword)}>O</ShowPasswordIcon>
+        </PasswordWrapper>
+        <StyledButton variant="contained" className="formButton" type="submit" onClick={() => changePage('/main')}>
+          {FormatMessage('login.page.login')}
+        </StyledButton>
+      </StyledForm>
+      <RemindWrapper>
+        Забыли пароль? <RemindButton onClick={() => changePage('/main')}>Напомнить</RemindButton>
+      </RemindWrapper>
     </LoginWrapper>
-    // <div className="loginPage-wrapper">
-    //   <div className="formContainer">
-    //     <form autoComplete="false" onSubmit={handleSubmit}>
-    //       <div className="form">
-    //         <input
-    //           autoComplete="off"
-    //           className="formInput"
-    //           type="text"
-    //           id="username"
-    //           value={username}
-    //           onChange={handleChange}
-    //           placeholder="Username"
-    //         ></input>
-    //         <div className="password">
-    //           <input
-    //             className="formInput"
-    //             type={showPassword ? 'text' : 'password'}
-    //             id="password"
-    //             value={password}
-    //             onChange={handleChange}
-    //             placeholder="Password"
-    //             autoComplete="off"
-    //           ></input>
-    //           <div
-    //             className="showIcon"
-    //             onClick={() => setShowPassword(!showPassword)}
-    //           >
-    //             O
-    //           </div>
-    //         </div>
-    //         <button className="formButton" type="submit">
-    //           {FormatMessage('login.page.login')}
-    //         </button>
-    //         <div className="signUp" onClick={() => changePage('/registration')}>
-    //           {FormatMessage('login.page.signup')}
-    //         </div>
-    //       </div>
-    //     </form>
-    //   </div>
-    // </div>
   )
 })
 

@@ -8,6 +8,7 @@ import { mainTheme } from './theme/mainTheme'
 import { Button } from '@mui/material'
 import { AppWrapper } from './App.styles'
 import AuthPage from './pages/AuthPage'
+import MainPage from './pages/MainPage'
 
 const App: FC = observer(() => {
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false)
@@ -19,7 +20,7 @@ const App: FC = observer(() => {
           <Routes>
             <Route path="/" element={<AuthPage />} />
             <Route path="/login" element={<LoginPage />} />
-            {/* <Route path="/profile" element={<UserPage />} /> */}
+            <Route path="/main" element={<MainPage />} />
             {/* <Route path="/registration" element={<RegisterPage />}></Route> */}
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
@@ -28,8 +29,10 @@ const App: FC = observer(() => {
             style={{
               position: 'absolute',
               top: '0px',
+              left: '0px',
               width: '25%',
               height: '5%',
+              fontSize: '2vw',
             }}
             onClick={() => setIsDarkTheme(!isDarkTheme)}
           >
