@@ -3,18 +3,17 @@ import { ChangeEvent, useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import FormatMessage from '../../dictionary'
 import {
-  LoginTitleBox,
-  LoginWrapper,
   PasswordWrapper,
-  RemindButton,
-  RemindWrapper,
+  RegistrationTitleBox,
+  RegistrationWrapper,
   ShowPasswordIcon,
   StyledButton,
   StyledForm,
   StyledInput,
-} from './LoginPage.styles'
+} from './RegistrationPage.styles'
+import { Box } from '@mui/material'
 
-const LoginPage = observer(() => {
+const RegistrationPage = observer(() => {
   const navigate = useNavigate()
 
   const changePage = useCallback(
@@ -40,8 +39,8 @@ const LoginPage = observer(() => {
   }, [])
 
   return (
-    <LoginWrapper>
-      <LoginTitleBox>KUDA</LoginTitleBox>
+    <RegistrationWrapper>
+      <RegistrationTitleBox>KUDA</RegistrationTitleBox>
       <StyledForm autoComplete="false" onSubmit={handleSubmit}>
         <StyledInput
           autoComplete="off"
@@ -64,15 +63,23 @@ const LoginPage = observer(() => {
           ></StyledInput>
           <ShowPasswordIcon onClick={() => setShowPassword(!showPassword)}>O</ShowPasswordIcon>
         </PasswordWrapper>
-        <StyledButton variant="contained" className="formButton" type="submit" onClick={() => changePage('/main')}>
-          {FormatMessage('login.page.login')}
+        <Box mt="3vh">
+          <StyledInput
+            className="formInput"
+            type={showPassword ? 'text' : 'password'}
+            id="passwordConfirm"
+            value={password}
+            onChange={handleChange}
+            placeholder="Повторите пароль"
+            autoComplete="off"
+          ></StyledInput>
+        </Box>
+        <StyledButton variant="contained" className="formButton" type="submit" onClick={() => changePage('/')}>
+          {FormatMessage('login.page.signup')}
         </StyledButton>
       </StyledForm>
-      <RemindWrapper>
-        Забыли пароль? <RemindButton onClick={() => changePage('/main')}>Напомнить</RemindButton>
-      </RemindWrapper>
-    </LoginWrapper>
+    </RegistrationWrapper>
   )
 })
 
-export default LoginPage
+export default RegistrationPage

@@ -10,6 +10,7 @@ import { AppWrapper } from './App.styles'
 import AuthPage from './pages/AuthPage'
 import MainPage from './pages/MainPage'
 import StartScreen from './pages/StartScreen'
+import RegistrationPage from './pages/RegistrationPage'
 
 const App: FC = observer(() => {
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false)
@@ -31,7 +32,7 @@ const App: FC = observer(() => {
             <Route path="/" element={<AuthPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/main" element={<MainPage />} />
-            {/* <Route path="/registration" element={<RegisterPage />}></Route> */}
+            <Route path="/registration" element={<RegistrationPage />}></Route>
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           <Button

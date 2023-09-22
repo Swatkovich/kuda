@@ -26,7 +26,9 @@ const AuthPage = observer(() => {
           {FormatMessage('login.page.login')}
         </StyledButton>
         <Box mt="5vh">
-          <StyledButton variant="outlined">{FormatMessage('login.page.signup')}</StyledButton>
+          <StyledButton variant="outlined" onClick={() => changePage('/registration')}>
+            {FormatMessage('login.page.signup')}
+          </StyledButton>
         </Box>
       </ButtonsWrapper>
     </AuthWrapper>
