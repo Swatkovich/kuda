@@ -1,34 +1,34 @@
-import './LoginPage.styles';
-import { observer } from 'mobx-react';
-import { ChangeEvent, useCallback, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import FormatMessage from '../../dictionary';
-import { LoginWrapper } from './LoginPage.styles';
+import './LoginPage.styles'
+import { observer } from 'mobx-react'
+import { ChangeEvent, useCallback, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import FormatMessage from '../../dictionary'
+import { LoginWrapper } from './LoginPage.styles'
 
 const LoginPage = observer(() => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const changePage = useCallback(
     (route: string) => {
-      navigate(route);
+      navigate(route)
     },
     [navigate]
-  );
+  )
 
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [showPassword, setShowPassword] = useState<boolean>(false)
 
-  const handleSubmit = useCallback(() => {}, []);
+  const handleSubmit = useCallback(() => {}, [])
 
   const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.id === 'username') {
-      setUsername(event.target.value);
+      setUsername(event.target.value)
     }
     if (event.target.id === 'password') {
-      setPassword(event.target.value);
+      setPassword(event.target.value)
     }
-  }, []);
+  }, [])
 
   return (
     <LoginWrapper>
@@ -74,7 +74,7 @@ const LoginPage = observer(() => {
     //     </form>
     //   </div>
     // </div>
-  );
-});
+  )
+})
 
-export default LoginPage;
+export default LoginPage

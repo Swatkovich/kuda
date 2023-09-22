@@ -46,6 +46,6 @@ const enLocale: { [key: string]: string } = {
 
   'main.block.3':
     'POINT AND CLICK is choise for you if you condiser yourseld as shooter player. Specialized on precision movements of your mouse and eyes trigger. Closer to the center and faster you are clicking - more points you gain',
-};
+}
 
-export default enLocale;
+export default enLocale

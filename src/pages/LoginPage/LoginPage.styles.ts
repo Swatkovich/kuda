@@ -1,4 +1,4 @@
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles'
 
 export const LoginWrapper = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -9,7 +9,7 @@ export const LoginWrapper = styled('div')(({ theme }) => ({
   color: theme.palette.text.primary,
   width: '100vw',
   height: '100vh',
-}));
+}))
 
 // (({ theme }) => ({
 //   display: 'flex',

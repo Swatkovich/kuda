@@ -1,5 +1,5 @@
-import { createTheme } from '@mui/material/styles';
-import { Theme } from '@mui/material/styles/createTheme';
+import { createTheme } from '@mui/material/styles'
+import { Theme } from '@mui/material/styles/createTheme'
 
 export function mainTheme(isDarkTheme: boolean): Theme {
   return createTheme({
@@ -21,5 +21,5 @@ export function mainTheme(isDarkTheme: boolean): Theme {
         disabled: '#797979',
       },
     },
-  });
+  })
 }
