@@ -1,9 +1,9 @@
 import { observer } from 'mobx-react'
 import { Box } from '@mui/material'
 import FormatMessage from '../../dictionary'
-import { AuthTitleBox, AuthTitleGreet, AuthTitleGreetSecind, AuthWrapper, ButtonsWrapper, StyledButton } from './MainPage.styles'
 import { useNavigate } from 'react-router-dom'
 import { useCallback } from 'react'
+import { MainTitleBox, MainTitleGreet, MainTitleGreetSecind, MainWrapper } from './MainPage.styles'
 
 const MainPage = observer(() => {
   const navigate = useNavigate()
@@ -16,11 +16,11 @@ const MainPage = observer(() => {
   )
 
   return (
-    <AuthWrapper>
-      <AuthTitleBox>
-        <AuthTitleGreet>A NIKUDA</AuthTitleGreet>
-        <AuthTitleGreetSecind>Все сидим дома</AuthTitleGreetSecind>
-      </AuthTitleBox>
+    <MainWrapper>
+      <MainTitleBox>
+        <MainTitleGreet>A NIKUDA</MainTitleGreet>
+        <MainTitleGreetSecind>Все сидим дома</MainTitleGreetSecind>
+      </MainTitleBox>
       {/* <ButtonsWrapper>
         <StyledButton variant="contained" onClick={() => changePage('/login')}>
           {FormatMessage('login.page.login')}
@@ -29,7 +29,7 @@ const MainPage = observer(() => {
           <StyledButton variant="outlined">{FormatMessage('login.page.signup')}</StyledButton>
         </Box>
       </ButtonsWrapper> */}
-    </AuthWrapper>
+    </MainWrapper>
   )
 })
 

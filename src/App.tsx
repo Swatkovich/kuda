@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import LoginPage from './pages/LoginPage'
 import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles'
 import { mainTheme } from './theme/mainTheme'
@@ -9,14 +9,24 @@ import { Button } from '@mui/material'
 import { AppWrapper } from './App.styles'
 import AuthPage from './pages/AuthPage'
 import MainPage from './pages/MainPage'
+import StartScreen from './pages/StartScreen'
 
 const App: FC = observer(() => {
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false)
+
+  const [showText, setShowText] = useState<boolean>(true)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowText(false)
+    }, 3250)
+  }, [])
 
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={mainTheme(isDarkTheme)}>
         <AppWrapper>
+          {showText && <StartScreen />}
           <Routes>
             <Route path="/" element={<AuthPage />} />
             <Route path="/login" element={<LoginPage />} />
