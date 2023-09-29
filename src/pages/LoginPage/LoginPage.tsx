@@ -13,8 +13,10 @@ import {
   StyledForm,
   StyledInput,
 } from './LoginPage.styles'
+import { useKeycloak } from '@react-keycloak/web'
 
 const LoginPage = observer(() => {
+  const { keycloak } = useKeycloak()
   const navigate = useNavigate()
 
   const changePage = useCallback(
@@ -38,6 +40,11 @@ const LoginPage = observer(() => {
       setPassword(event.target.value)
     }
   }, [])
+
+  const loginAccount = useCallback(() => {
+    keycloak.login()
+    changePage('/main')
+  }, [changePage, keycloak])
 
   return (
     <LoginWrapper>
@@ -64,9 +71,11 @@ const LoginPage = observer(() => {
           ></StyledInput>
           <ShowPasswordIcon onClick={() => setShowPassword(!showPassword)}>O</ShowPasswordIcon>
         </PasswordWrapper>
-        <StyledButton variant="contained" className="formButton" type="submit" onClick={() => changePage('/main')}>
-          {FormatMessage('login.page.login')}
-        </StyledButton>
+        {!keycloak.authenticated && (
+          <StyledButton variant="contained" className="formButton" type="submit" onClick={loginAccount}>
+            {FormatMessage('login.page.login')}
+          </StyledButton>
+        )}
       </StyledForm>
       <RemindWrapper>
         Забыли пароль? <RemindButton onClick={() => changePage('/main')}>Напомнить</RemindButton>
