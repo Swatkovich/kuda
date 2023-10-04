@@ -12,8 +12,9 @@ import MainPage from './pages/MainPage'
 import StartScreen from './pages/StartScreen'
 import RegistrationPage from './pages/RegistrationPage'
 import { ReactKeycloakProvider } from '@react-keycloak/web'
-import keycloak from './Keycloak'
+import { initOptions, keycloak, handleOnEvent } from './Keycloak'
 import PrivateRoute from './helpers/PrivateRoute'
+import Loader from './components/Loader'
 
 const App: FC = observer(() => {
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false)
@@ -27,7 +28,12 @@ const App: FC = observer(() => {
   }, [])
 
   return (
-    <ReactKeycloakProvider authClient={keycloak}>
+    <ReactKeycloakProvider
+      authClient={keycloak}
+      initOptions={initOptions}
+      LoadingComponent={<Loader />}
+      onEvent={(event, error) => handleOnEvent(event, error)}
+    >
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={mainTheme(isDarkTheme)}>
           <AppWrapper>

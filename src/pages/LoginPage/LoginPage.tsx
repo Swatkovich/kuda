@@ -41,10 +41,14 @@ const LoginPage = observer(() => {
     }
   }, [])
 
-  const loginAccount = useCallback(() => {
-    keycloak.login()
-    changePage('/main')
-  }, [changePage, keycloak])
+  const handleLogInOut = () => {
+    if (keycloak.authenticated) {
+      navigate('/')
+      keycloak.logout()
+    } else {
+      keycloak.login()
+    }
+  }
 
   return (
     <LoginWrapper>
@@ -71,11 +75,9 @@ const LoginPage = observer(() => {
           ></StyledInput>
           <ShowPasswordIcon onClick={() => setShowPassword(!showPassword)}>O</ShowPasswordIcon>
         </PasswordWrapper>
-        {!keycloak.authenticated && (
-          <StyledButton variant="contained" className="formButton" type="submit" onClick={loginAccount}>
-            {FormatMessage('login.page.login')}
-          </StyledButton>
-        )}
+        <StyledButton variant="contained" className="formButton" onClick={handleLogInOut}>
+          {FormatMessage('login.page.login')}
+        </StyledButton>
       </StyledForm>
       <RemindWrapper>
         Забыли пароль? <RemindButton onClick={() => changePage('/main')}>Напомнить</RemindButton>
