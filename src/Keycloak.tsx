@@ -40,7 +40,7 @@ export const handleOnEvent = async (event: string, error: AuthClientError | unde
       //   console.log('UserExtra created for ' + username)
       // }
       // @ts-ignore
-      keycloak['avatar'] = response.data.avatar
+      // keycloak['avatar'] = response.data.avatar
     }
   }
 }
